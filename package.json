@@ -1,0 +1,28 @@
+{
+  "name": "smtp-helper",
+  "version": "1.0.0",
+  "description": "A Node.js helper library to simplify SMTP server setup and email testing",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node test/test.ts"
+  },
+  "keywords": [
+    "smtp",
+    "email",
+    "nodemailer",
+    "helper"
+  ],
+  "author": "Aman Verma",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.1",
+    "@types/nodemailer": "^7.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
