@@ -1,0 +1,33 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch: # Allows you to trigger manually from GitHub Actions tab
+  push:
+    tags:
+      - 'v*.*.*' # Triggers when you create a tag like v1.0.0, v1.1.0, etc.
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Required for GitHub → npm OIDC authentication
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run build --if-present
+
+      - name: Publish to npm
+        run: npm publish --access public
