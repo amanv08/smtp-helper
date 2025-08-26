@@ -35,10 +35,3 @@ export function createSMTPClient(config: SMTPConfig | Provider & { user: string;
     }
   });
 }
-
-export async function sendEmail(
-  client: Transporter,
-  options: { from: string; to: string; subject?: string; text?: string; html?: string }
-) {
-  return client.sendMail(options);
-}

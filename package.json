@@ -1,6 +1,6 @@
 {
   "name": "smtp-helper",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A Node.js helper library to simplify SMTP server setup and email testing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,15 @@
     "smtp",
     "email",
     "nodemailer",
-    "helper"
+    "helper",
+    "smtp-server",
+    "smtp-setup",
+    "smtp setup",
+    "setup",
+    "email sender",
+    "sendmail",
+    "send mail",
+    "node sendmail"
   ],
   "author": "Aman Verma",
   "license": "MIT",

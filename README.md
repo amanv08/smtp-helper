@@ -12,6 +12,7 @@ npm install smtp-helper
 - Simple SMTP client setup
 - Send emails with minimal configuration
 - Supports secure and non-secure SMTP connections
+- Supports attachments (local files, Buffers, or URLs)
 
 ## Usage
 
@@ -28,7 +29,7 @@ const client = createSMTPClient({
 });
 ```
 
-2. Send an Email
+2. Send an Simple Email
 ```
 sendEmail(client, {
   from: 'you@example.com',
@@ -37,6 +38,32 @@ sendEmail(client, {
   text: 'This is a test email!',
 })
 .then(() => console.log('Email sent successfully'))
+.catch(console.error);
+```
+
+3. Send an Email with Attachments
+```
+sendEmail(client, {
+  from: 'you@example.com',
+  to: 'recipient@example.com',
+  subject: 'Email with Attachment',
+  text: 'Please see the attached file.',
+  attachments: [
+    {
+      filename: 'test.txt',
+      path: './test.txt', // local file path
+    },
+    {
+      filename: 'image.jpg',
+      path: 'https://example.com/image.jpg', // remote URL
+    },
+    {
+      filename: 'notes.txt',
+      content: 'This is a string-based file attachment.', // string or Buffer
+    }
+  ],
+})
+.then(() => console.log('Email with attachment sent successfully'))
 .catch(console.error);
 ```
 
@@ -58,6 +85,12 @@ Sends an email using the created client.
 - to (string): Recipient email address
 - subject (string): Email subject
 - text (string): Email body (plain text)
+- html (string, optional): Email body (HTML)
+- attachments (array, optional): List of attachments
+  - filename (string): Name of the file
+  - path (string, optional): Local file path or remote URL
+  - content (Buffer | string, optional): File content directly
+  - contentType (string, optional): MIME type
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
